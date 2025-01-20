@@ -1,0 +1,189 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #2e2f42;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover {
+  color: lightcoral;
+}
+
+.container-timer {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 355px;
+}
+
+input#datetime-picker {
+  margin-top: 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 272px;
+  height: 40px;
+  padding: 0;
+  padding-left: 16px;
+}
+
+button[data-start] {
+  width: 75px;
+  height: 40px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #b0b0b0;
+  border: none;
+  border-radius: 4px;
+  cursor: not-allowed;
+  padding: 0;
+}
+
+button[data-start]:enabled {
+  background-color: #4caf50;
+  cursor: pointer;
+}
+
+.timer {
+  display: flex;
+  justify-content: space-between;
+  width: 346px;
+  margin-top: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.value {
+  font-size: 40px;
+  font-weight: bold;
+  color: #2c2c2c;
+}
+
+.label {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #666;
+}
+
+
+.form {
+  width: 360px;
+}
+.lab-delay {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.input-delay:hover {
+  border: 1px solid #000;
+}
+
+.input-delay:focus {
+  border: 1px solid #4e75ff;
+  outline: none;
+}
+
+.input-delay {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: calc(100% - 16px);
+  height: 40px;
+  padding: 0;
+  padding-left: 16px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.legend-state {
+  text-align: start;
+  left: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  margin-left: 28px;
+}
+
+.input-state[type="radio"] {
+  border: 1px solid #757575;
+  border-radius: 14px;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.input-state[type="radio"]:hover {
+  border: 1px solid #757575;
+}
+
+.input-state[type="radio"]:focus {
+  border: 1px solid #4e75ff;
+  background: #4e75ff;
+}
+
+.field-state {
+  text-align: center;
+  width: 100%;
+  height: 78px;
+  border-radius: 4px;
+  border: 1px solid #808080;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 24px;
+}
+
+.field-state:hover, .field-state:focus {
+  border: 1px solid #000;
+}
+
+.label-radio-state {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2e2f42;
+  margin: 0 24px;
+}
+
+.btn-snack {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 100%;
+  height: 40px;
+  background: #4e75ff;
+}
+
+.btn-snack:hover, .btn-snack:focus {
+  background: #6c8cff;
+}
