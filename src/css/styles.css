@@ -110,25 +110,78 @@ body {
   color: #2e2f42;
 }
 
+
 .iziToast-error {
   font-family: 'Arial', sans-serif;
-  border-radius: 8px; /* Закруглені кути */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легка тінь */
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-/* Кастомні стилі для iziToast */
 .custom-toast {
   border-radius: 8px;
-  border: 1px solid #fff; /* Білий контур */
+  border: 1px solid #fff;
   font-family: 'Arial', sans-serif;
-  color: #fff; /* Білий текст */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь */
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .iziToast-error {
-  background-color: #f14646 !important; /* Червоний фон */
+  background-color: #f14646 !important;
 }
 
 .iziToast-info {
-  background-color: #209cee !important; /* Синій фон */
+  background-color: #209cee !important;
 }
+
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px dotted #FFF;
+  border-style: solid solid dotted dotted;
+  border-radius: 50%;
+  display: inline-block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+  z-index: 1000;
+}
+
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px dotted #FF3D00;
+  border-style: solid solid dotted;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  animation: rotationBack 1s linear infinite;
+  transform-origin: center center;
+}
+    
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
