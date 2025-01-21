@@ -5,26 +5,35 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
+const loader = document.querySelector('.loader');
 
 let currentQuery = '';
 let currentPage = 1;
 const perPage = 40;
 let lightbox;
 
+searchForm.addEventListener('submit', onSearch);
 
 function showLoader() {
-  document.querySelector('.loader').style.display = 'block';
+  loader.style.display = 'block';
 }
 
 function hideLoader() {
-  document.querySelector('.loader').style.display = 'none';
+  loader.style.display = 'none';
 }
 
+function showErrorToast() {
+  iziToast.error({
+    title: '',
+    message: 'Sorry, there are no images matching<br>your search query. Please, try again!',
+    position: 'topRight',
+    timeout: 5000,
+    backgroundColor: '#f14646',
+    class: 'custom-toast',
+  });
+}
 
-searchForm.addEventListener('submit', onSearch);
-
-
-async function onSearch(event) {
+function onSearch(event) {
   event.preventDefault();
 
   const query = event.currentTarget.elements.searchQuery.value.trim();
@@ -42,29 +51,32 @@ async function onSearch(event) {
   currentPage = 1;
 
   clearGallery();
-  showLoader(); 
+  showLoader();
 
-  try {
-    const data = await fetchPhotos(currentQuery, currentPage, perPage);
+  fetchPhotos(currentQuery, currentPage, perPage)
+    .then((data) => {
+      setTimeout(() => {
+        hideLoader();
 
-    if (data.hits.length === 0) {
-      showErrorToast();
-      return;
-    }
+        if (data.hits.length === 0) {
+          showErrorToast();
+          return;
+        }
 
-    renderGallery(data.hits);
-    lightbox = new SimpleLightbox('.gallery a');
-    lightbox.refresh();
-  } catch (error) {
-    iziToast.error({
-      title: 'Error',
-      message: 'Something went wrong. Please try again later.',
-      position: 'topRight',
-      timeout: 3000,
+        renderGallery(data.hits);
+        lightbox = new SimpleLightbox('.gallery a');
+        lightbox.refresh();
+      }, 2000); 
+    })
+    .catch(() => {
+      hideLoader();
+      iziToast.error({
+        title: 'Error',
+        message: 'Something went wrong. Please try again later.',
+        position: 'topRight',
+        timeout: 3000,
+      });
     });
-  } finally {
-    hideLoader();
-  }
 }
 
 function renderGallery(images) {
@@ -74,15 +86,4 @@ function renderGallery(images) {
 
 function clearGallery() {
   gallery.innerHTML = '';
-}
-
-function showErrorToast() {
-  iziToast.error({
-    title: '',
-    message: 'Sorry, there are no images matching<br>your search query. Please, try again!',
-    position: 'topRight',
-    timeout: 5000,
-    backgroundColor: '#f14646',
-    class: 'custom-toast',
-  });
 }
